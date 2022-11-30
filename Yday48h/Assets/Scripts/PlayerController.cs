@@ -6,36 +6,52 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField]
+    UIManager uiManager;
+
+    [Header("Movement")]
+    [SerializeField]
     private float moveSpeed;
     [SerializeField]
     private float jumpForce;
-
-    [SerializeField]
     private bool isJumping;
-    [SerializeField]
-    private bool isGrounded;
+    private bool isGrounded = true;
 
     [SerializeField]
     private Transform groundCheckLeft;
     [SerializeField]
     private Transform groundCheckRigth;
-
-    [SerializeField]
     private Rigidbody2D rb;
 
-    void FixedUpdate()
+    [Header("Stats")]
+    public int health;
+    [SerializeField]
+    private int maxHealth;
+
+    private bool isDead;
+
+    private void Awake() 
+    {
+        rb = GetComponent<Rigidbody2D>();
+        health = maxHealth;
+    }
+
+    void Update()
     {
         isGrounded = Physics2D.OverlapArea(groundCheckLeft.position, groundCheckRigth.position);
-
-        float horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             isJumping = true;
         }
 
+    }
+
+    void FixedUpdate() 
+    {
+        float horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         MovePLayer(horizontalMovement);
     }
+
 
     void MovePLayer(float _horizontalMovement)
     {
@@ -48,5 +64,21 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector2(0f, jumpForce));
             
         }
+    }
+
+    void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if(health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        gameObject.SetActive(false);
+        uiManager.GoToMenu();
     }
 }

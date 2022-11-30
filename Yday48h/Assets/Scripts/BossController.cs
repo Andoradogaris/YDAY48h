@@ -5,6 +5,8 @@ using DG.Tweening;
 
 public class BossController : MonoBehaviour
 {
+    Animator anim;
+
     [Header("Attack 1")]
     [SerializeField]
     private List<Transform> positions = new List<Transform>();
@@ -13,17 +15,55 @@ public class BossController : MonoBehaviour
     [SerializeField]
     private float moveTime;
 
+    [Header("Stats")]
+    public int health;
+    [SerializeField]
+    private int maxHealth;
 
-    void Update() 
+    private bool canAttack = true;
+
+    void Awake() 
     {
-        Move();
+        health = maxHealth; 
+        anim = GetComponent<Animator>();
     }
 
-    void Move() 
+    void Update()
     {
-        if(movePosition >= 0 && movePosition <= 2)
+        if(canAttack)
         {
-            transform.DOMove(positions[movePosition].position, moveTime);
+            StartCoroutine(RandomAttack());
         }
+    }
+
+    void Attack1()
+    {
+        
+    }
+
+    void Attack2()
+    {
+        
+    }
+
+    void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if(health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        gameObject.SetActive(false);
+        Debug.Log("isDied");
+    }
+
+    IEnumerator RandomAttack()
+    {
+        yield return new WaitForSeconds(0f);
     }
 }
