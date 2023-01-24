@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 470c0c08d0d0cf84c8909897da924182
+guid: 0fd2b64a254d34f42a823af9d09e5d8f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 19
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,49 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BossLaser_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ebc7d20d824c67d4c92faecfbba6b511
-      internalID: 1992992025
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BossLaser_1
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 848031375c573bb4c8234c043e704992
-      internalID: -1623987038
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BossLaser_2
+      name: MC_Idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -161,17 +119,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c326ce697323e346a2d4f325231ac10
-      internalID: -1391076861
+      spriteID: c69bcfb13901cce448d4cb409b2557f0
+      internalID: 498262466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossLaser_3
+      name: MC_Idle_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 64
         y: 64
         width: 64
         height: 64
@@ -182,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a3d50962217a374189d038b8986898c
-      internalID: 2097833144
+      spriteID: c4e681e8d3b1375409c5993fa3adbbdb
+      internalID: -1438733341
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossLaser_4
+      name: MC_Idle_2
       rect:
         serializedVersion: 2
         x: 0
@@ -203,17 +161,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d12d14be3ec380545ae4cb4f684447ec
-      internalID: 1686353805
+      spriteID: 68f4c92db1e0fe642aaa0e71564f2f54
+      internalID: 1900662962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossLaser_5
+      name: MC_Idle_3
       rect:
         serializedVersion: 2
-        x: 128
+        x: 64
         y: 0
         width: 64
         height: 64
@@ -224,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ad82f2df0d868d439cfc841ce820e18
-      internalID: -70454570
+      spriteID: 2efe5a14953c1634088843bea6a4c35a
+      internalID: 1680975601
       vertices: []
       indices: 
       edges: []
@@ -241,12 +199,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BossLaser_3: 2097833144
-      BossLaser_2: -1391076861
-      BossLaser_4: 1686353805
-      BossLaser_0: 1992992025
-      BossLaser_1: -1623987038
-      BossLaser_5: -70454570
+      MC_Idle_1: -1438733341
+      MC_Idle_3: 1680975601
+      MC_Idle_2: 1900662962
+      MC_Idle_0: 498262466
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

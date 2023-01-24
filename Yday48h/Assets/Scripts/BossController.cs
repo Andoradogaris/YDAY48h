@@ -5,15 +5,22 @@ using DG.Tweening;
 
 public class BossController : MonoBehaviour
 {
+    [SerializeField]
     Animator anim;
+    
 
     [Header("Attack 1")]
     [SerializeField]
     private List<Transform> positions = new List<Transform>();
     [SerializeField]
-    private int movePosition;
-    [SerializeField]
     private float moveTime;
+    [SerializeField]
+    GameObject laserObject;
+    [SerializeField]
+    Transform laserPos;
+
+    [SerializeField]
+    float attack1Time;
 
     [Header("Stats")]
     public int health;
@@ -25,25 +32,42 @@ public class BossController : MonoBehaviour
     void Awake() 
     {
         health = maxHealth; 
-        anim = GetComponent<Animator>();
+        anim.SetInteger("Attack", 0);
     }
 
     void Update()
     {
         if(canAttack)
         {
-            StartCoroutine(RandomAttack());
+            RandomAttack();
         }
     }
 
-    void Attack1()
+    IEnumerator Attack1()
     {
-        
+        int i = 0;
+        for(i = 0; i < 3; i++)
+        {
+            transform.DOMove(positions[Random.Range(0, positions.Count)].transform.position, moveTime);
+            anim.SetInteger("Attack", 1);
+            yield return new WaitForSeconds(attack1Time);
+            Instantiate(laserObject, laserPos.position, laserPos.rotation);
+            anim.SetInteger("Attack", 0);
+        }
+        i  = 0;
     }
 
     void Attack2()
     {
         
+    }
+
+    IEnumerator Idle()
+    {
+        yield return new WaitForSeconds(attack1Time + moveTime);
+        transform.DOMove(positions[1].transform.position, moveTime);
+        yield return new WaitForSeconds(3f);
+        canAttack = true;
     }
 
     void TakeDamage(int damage)
@@ -62,8 +86,15 @@ public class BossController : MonoBehaviour
         Debug.Log("isDied");
     }
 
-    IEnumerator RandomAttack()
+    void RandomAttack()
     {
-        yield return new WaitForSeconds(0f);
+        canAttack = false;
+        int rdmAttack = Random.Range(0, 1);
+        if(rdmAttack == 0)
+        {
+            StartCoroutine(Attack1());
+        }
+
+        StartCoroutine(Idle());
     }
 }

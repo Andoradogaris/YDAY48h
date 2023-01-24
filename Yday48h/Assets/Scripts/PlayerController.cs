@@ -29,9 +29,13 @@ public class PlayerController : MonoBehaviour
 
     private bool isDead;
 
+    [Header("Animation")]
+    Animator anim;
+
     private void Awake() 
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         health = maxHealth;
     }
 
@@ -55,18 +59,35 @@ public class PlayerController : MonoBehaviour
 
     void MovePLayer(float _horizontalMovement)
     {
+        if(_horizontalMovement != 0)
+        {
+            if(_horizontalMovement > 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else if(_horizontalMovement < 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            anim.SetBool("isWalking", true);
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
+        }
+
         Vector3 targetVelocity = new Vector2(_horizontalMovement, rb.velocity.y);
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref targetVelocity, .05f);
 
         if (isJumping)
         {
             isJumping = false;
-            rb.AddForce(new Vector2(0f, jumpForce));
+            rb.AddForce(new Vector2(0f, jumpForce * 4));
             
         }
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
 
